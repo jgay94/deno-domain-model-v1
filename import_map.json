@@ -1,0 +1,7 @@
+{
+  "imports": {
+    "@std/": "https://deno.land/std@0.180.0/",
+    "@contact/": "./src/domain/contact/",
+    "@account/": "./src/domain/account/"
+  }
+}
