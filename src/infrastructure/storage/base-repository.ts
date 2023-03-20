@@ -1,29 +1,61 @@
-import { IRepository } from "@storage/typings.d.ts";
+import { Identifiable, IRepository } from "@storage/typings.d.ts";
 
-export abstract class BaseRepository<T> implements IRepository<T> {
+export abstract class BaseRepository<T extends Identifiable> implements IRepository<T> {
   protected storageKey: string;
 
   constructor(storageKey: string) {
     this.storageKey = storageKey;
   }
 
-  async getById(id: string): Promise<T | null> {
-    // Implement getById logic using localStorage
+  protected loadData(): T[] {
+    return JSON.parse(localStorage.getItem(this.storageKey) ?? "[]");
+  }
+  
+  protected saveData(items: T[]): void {
+    localStorage.setItem(this.storageKey, JSON.stringify(items));
+  }  
+
+  public getAll(): Promise<T[]> {
+    return Promise.resolve(this.loadData());
   }
 
-  async getAll(): Promise<T[]> {
-    // Implement getAll logic using localStorage
+  public getById(id: string): Promise<T | null> {
+    const items = this.loadData();
+    return Promise.resolve(items.find((item: T) => item.id === id) || null);
   }
-
-  async create(item: T): Promise<T> {
-    // Implement create logic using localStorage
+  
+  public create(item: T): Promise<T> {
+    const items = this.loadData();
+    items.push(item);
+    this.saveData(items);
+    return Promise.resolve(item);
   }
-
-  async update(id: string, item: T): Promise<T | null> {
-    // Implement update logic using localStorage
+  
+  public update(id: string, item: T): Promise<T | null> {
+    const items = this.loadData();
+    const itemIndex = items.findIndex((existingItem: T) => existingItem.id === id);
+  
+    if (itemIndex === -1) {
+      return Promise.resolve(null);
+    }
+  
+    items[itemIndex] = item;
+    this.saveData(items);
+  
+    return Promise.resolve(item);
   }
-
-  async delete(id: string): Promise<boolean> {
-    // Implement delete logic using localStorage
+  
+  public delete(id: string): Promise<boolean> {
+    const items = this.loadData();
+    const itemIndex = items.findIndex((existingItem: T) => existingItem.id === id);
+  
+    if (itemIndex === -1) {
+      return Promise.resolve(false);
+    }
+  
+    items.splice(itemIndex, 1);
+    this.saveData(items);
+  
+    return Promise.resolve(true);
   }
 }

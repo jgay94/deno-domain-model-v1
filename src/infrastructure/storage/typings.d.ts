@@ -5,3 +5,7 @@ export interface IRepository<T> {
   update(id: string, item: T): Promise<T | null>;
   delete(id: string): Promise<boolean>;
 }
+
+export interface Identifiable {
+  id: string;
+}
