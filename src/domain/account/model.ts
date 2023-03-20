@@ -1,7 +1,9 @@
+import { Identifiable } from "@storage/mod.ts";
 import { Contact } from "@contact/mod.ts";
+
 import { AccountConstructorParams } from "@account/typings.d.ts";
 
-export class Account {
+export class Account implements Identifiable {
   public readonly id: string;
   public name: string;
   private contacts: Contact[];

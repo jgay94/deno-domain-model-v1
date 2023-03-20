@@ -1,6 +1,8 @@
+import { Identifiable } from "@storage/mod.ts";
+
 import { ContactConstructorParams } from "@contact/typings.d.ts";
 
-export class Contact {
+export class Contact implements Identifiable {
   public readonly id: string;
   public firstName: string;
   public lastName: string;

@@ -1,4 +1,5 @@
 import { IRepository } from "@storage/mod.ts";
+
 import { Contact } from "@contact/model.ts";
 
 export interface ContactConstructorParams {
