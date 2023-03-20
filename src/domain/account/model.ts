@@ -12,7 +12,6 @@ export class Account {
     this.contacts = params.contacts ?? [];
   }
 
-
   public getContacts(): Contact[] {
     return this.contacts;
   }

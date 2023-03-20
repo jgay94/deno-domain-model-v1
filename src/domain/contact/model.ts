@@ -22,7 +22,7 @@ export class Contact {
   }
 
   set fullName(value: string) {
-    const [firstName, lastName] = value.split(' ');
+    const [firstName, lastName] = value.split(" ");
     this.firstName = firstName;
     this.lastName = lastName;
   }
