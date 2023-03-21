@@ -62,4 +62,21 @@ export class LocalStorage<T extends Identifiable> implements IStorage<T> {
 
     return Promise.resolve(true);
   }
+
+  public upsert(item: T): Promise<T> {
+    const items = this.loadData();
+    const itemIndex = items.findIndex((existingItem: T) =>
+      existingItem.id === item.id
+    );
+
+    if (itemIndex === -1) {
+      items.push(item);
+    } else {
+      items[itemIndex] = item;
+    }
+
+    this.saveData(items);
+
+    return Promise.resolve(item);
+  }
 }

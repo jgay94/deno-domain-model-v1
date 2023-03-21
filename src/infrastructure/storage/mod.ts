@@ -1,6 +1,6 @@
-export { LocalStorage } from "@infrastructure/storage/local.storage.ts";
-export { MemoryStorage } from "@infrastructure/storage/memory.storage.ts";
-export { FileStorage } from "@infrastructure/storage/file.storage.ts";
+export { LocalStorage } from "@infrastructure/storage/localstorage.ts";
+export { MemoryStorage } from "@infrastructure/storage/memory.ts";
+export { FileStorage } from "@infrastructure/storage/filesystem.ts";
 
 export type {
   Identifiable,

@@ -52,4 +52,16 @@ export class FileStorage<T extends Identifiable> implements IStorage<T> {
     await this.writeData(data);
     return true;
   }
+
+  public async upsert(item: T): Promise<T> {
+    const data = await this.readData();
+    const index = data.findIndex((existingItem) => existingItem.id === item.id);
+    if (index === -1) {
+      data.push(item);
+    } else {
+      data[index] = item;
+    }
+    await this.writeData(data);
+    return item;
+  }
 }

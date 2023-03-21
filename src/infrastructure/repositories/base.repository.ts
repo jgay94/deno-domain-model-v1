@@ -1,6 +1,6 @@
 import { Identifiable, IStorage } from "@infrastructure/storage/mod.ts";
 
-import { IRepository } from "@domain/common/mod.ts";
+import { IRepository } from "@infrastructure/repositories/typings.d.ts";
 
 export abstract class BaseRepository<T extends Identifiable> implements IRepository<T> {
   constructor(protected readonly storage: IStorage<T>) {}
@@ -23,5 +23,9 @@ export abstract class BaseRepository<T extends Identifiable> implements IReposit
 
   public delete(id: string): Promise<boolean> {
     return this.storage.delete(id);
+  }
+
+  public upsert(item: T): Promise<T> {
+    return this.storage.upsert(item);
   }
 }

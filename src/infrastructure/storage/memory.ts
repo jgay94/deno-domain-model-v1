@@ -31,4 +31,9 @@ export class MemoryStorage<T extends Identifiable> implements IStorage<T> {
   public delete(id: string): Promise<boolean> {
     return Promise.resolve(this.storage.delete(id));
   }
+
+  public upsert(item: T): Promise<T> {
+    this.storage.set(item.id, item);
+    return Promise.resolve(item);
+  }
 }
