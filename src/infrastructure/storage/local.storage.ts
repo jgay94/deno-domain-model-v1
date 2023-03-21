@@ -1,4 +1,4 @@
-import { Identifiable, IStorage } from "@storage/typings.d.ts";
+import { Identifiable, IStorage } from "@infrastructure/storage/typings.d.ts";
 
 export class LocalStorage<T extends Identifiable> implements IStorage<T> {
   protected storageKey: string;

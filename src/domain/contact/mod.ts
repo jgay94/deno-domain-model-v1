@@ -1,1 +1,1 @@
-export { Contact } from "@contact/model.ts";
+export { Contact } from "@domain/contact/entity.ts";

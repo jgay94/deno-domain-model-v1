@@ -1,11 +1,9 @@
-import { Identifiable, IRepository, IStorage } from "@storage/typings.d.ts";
+import { Identifiable, IStorage } from "@infrastructure/storage/mod.ts";
+
+import { IRepository } from "@domain/common/mod.ts";
 
 export abstract class BaseRepository<T extends Identifiable> implements IRepository<T> {
-  protected storage: IStorage<T>;
-
-  constructor(storage: IStorage<T>) {
-    this.storage = storage;
-  }
+  constructor(protected readonly storage: IStorage<T>) {}
 
   public getAll(): Promise<T[]> {
     return this.storage.getAll();

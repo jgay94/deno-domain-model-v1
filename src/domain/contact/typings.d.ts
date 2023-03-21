@@ -1,6 +1,6 @@
-import { IRepository } from "@storage/mod.ts";
+import { IRepository } from "@domain/common/mod.ts";
 
-import { Contact } from "@contact/model.ts";
+import { Contact } from "@domain/contact/entity.ts";
 
 export interface ContactConstructorParams {
   id: string;
