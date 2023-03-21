@@ -1,13 +1,11 @@
-import { BaseRepository, LocalStorage } from "@storage/mod.ts";
+import { BaseRepository } from "@domain/common/mod.ts";
+import { IStorage } from "@infrastructure/storage/mod.ts";
 
-import { Account } from "@account/model.ts";
-import { IAccountRepository } from "@account/typings.d.ts";
-
-const DEFAULT_STORAGE_KEY = 'accounts';
+import { Account } from "@domain/account/entity.ts";
+import { IAccountRepository } from "@domain/account/typings.d.ts";
 
 export class AccountRepository extends BaseRepository<Account> implements IAccountRepository {
-  constructor() {
-    const storage = new LocalStorage<Account>(DEFAULT_STORAGE_KEY);
+  constructor(storage: IStorage<Account>) {
     super(storage);
   }
 }

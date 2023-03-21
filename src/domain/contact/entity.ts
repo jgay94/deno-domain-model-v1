@@ -10,13 +10,13 @@ export class Contact implements Identifiable {
   public phone: string;
   public accountId?: string;
 
-  constructor({ 
-    id, 
-    firstName, 
-    lastName, 
-    email, 
-    phone, 
-    accountId 
+  constructor({
+    id,
+    firstName,
+    lastName,
+    email,
+    phone,
+    accountId,
   }: ContactConstructorParams) {
     this.id = id;
     this.firstName = firstName;

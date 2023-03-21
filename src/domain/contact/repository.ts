@@ -1,13 +1,11 @@
-import { BaseRepository, LocalStorage } from "@storage/mod.ts";
+import { BaseRepository } from "@domain/common/mod.ts";
+import { IStorage } from "@infrastructure/storage/mod.ts";
 
-import { Contact } from "@contact/model.ts";
-import { IContactRepository } from "@contact/typings.d.ts";
-
-const DEFAULT_STORAGE_KEY = 'contacts';
+import { Contact } from "@domain/contact/entity.ts";
+import { IContactRepository } from "@domain/contact/typings.d.ts";
 
 export class ContactRepository extends BaseRepository<Contact> implements IContactRepository {
-  constructor() {
-    const storage = new LocalStorage<Contact>(DEFAULT_STORAGE_KEY);
+  constructor(storage: IStorage<Contact>) {
     super(storage);
   }
 }

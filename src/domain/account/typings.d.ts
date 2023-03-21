@@ -1,7 +1,7 @@
-import { Contact } from "@contact/mod.ts";
-import { IRepository } from "@storage/mod.ts";
+import { Contact } from "@domain/contact/mod.ts";
+import { IRepository } from "@domain/common/mod.ts";
 
-import { Account } from "@account/model.ts";
+import { Account } from "@domain/account/entity.ts";
 
 export interface AccountConstructorParams {
   id: string;
@@ -9,4 +9,5 @@ export interface AccountConstructorParams {
   contacts?: Contact[];
 }
 
+// deno-lint-ignore no-empty-interface
 export interface IAccountRepository extends IRepository<Account> {}
