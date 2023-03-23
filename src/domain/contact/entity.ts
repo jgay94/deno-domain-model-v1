@@ -1,13 +1,14 @@
-import { Identifiable } from "@infrastructure/storage/mod.ts";
+import { Id, Identifiable } from "@infrastructure/storage/mod.ts";
 
 import { ContactConstructorParams } from "@domain/contact/typings.d.ts";
 
 export class Contact implements Identifiable {
-  public readonly id: string;
+  public readonly id: Id;
   public firstName: string;
   public lastName: string;
   public email: string;
   public phone: string;
+  public isPrimary: boolean;
   public accountId?: string;
 
   constructor({
@@ -16,6 +17,7 @@ export class Contact implements Identifiable {
     lastName,
     email,
     phone,
+    isPrimary,
     accountId,
   }: ContactConstructorParams) {
     this.id = id;
@@ -23,6 +25,7 @@ export class Contact implements Identifiable {
     this.lastName = lastName;
     this.email = email;
     this.phone = phone;
+    this.isPrimary = isPrimary;
     this.accountId = accountId;
   }
 

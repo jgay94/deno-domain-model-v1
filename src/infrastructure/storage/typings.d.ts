@@ -1,12 +1,21 @@
+import { Contact } from "@domain/contact/mod.ts";
+import { Account } from "@domain/account/mod.ts";
+
+export type Id = string;
+
 export interface Identifiable {
-  id: string;
+  id: Id;
 }
 
 export interface IStorage<T extends Identifiable> {
   getAll(): Promise<T[]>;
-  getById(id: string): Promise<T | null>;
+  getById(id: Id): Promise<T | null>;
   create(item: T): Promise<T>;
-  update(id: string, item: T): Promise<T | null>;
-  delete(id: string): Promise<boolean>;
+  update(id: Id, item: T): Promise<T | null>;
   upsert(item: T): Promise<T>;
+  delete(id: Id): Promise<boolean>;
 }
+
+export type ContactStorage = IStorage<Contact>;
+
+export type AccountStorage = IStorage<Account>;

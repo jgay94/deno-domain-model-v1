@@ -10,6 +10,7 @@
  - utils/ contains various utility modules, such as configuration, logging, email notifications, and helper functions.
 ```
 src/
+├── main.ts
 ├── api/
 │   ├── routes/
 │   │   ├── mod.ts
@@ -25,23 +26,32 @@ src/
 │       ├── mod.ts
 │       └── auth.ts
 ├── application/
+│   ├── auth/
+│   │   ├── mod.ts
+│   │   ├── service.ts
+│   │   ├── helpers.ts
+│   │   └── typings.d.ts
+│   ├── jobs/
+│   │   ├── mod.ts
+│   │   ├── service.ts
+│   │   ├── helpers.ts
+│   │   └── typings.d.ts
 │   └── services/
 │       ├── mod.ts
 │       ├── account.service.ts
 │       ├── contact.service.ts
+│       ├── base.service.ts
 │       └── typings.d.ts
 ├── domain/
 │   ├── account/
 │   │   ├── mod.ts
 │   │   ├── entity.ts
-│   │   ├── service.ts
-│   │   ├── schema.ts
+│   │   ├── validations.ts
 │   │   └── typings.d.ts
 │   └── contact/
 │       ├── mod.ts
 │       ├── entity.ts
-│       ├── service.ts
-│       ├── schema.ts
+│       ├── validations.ts
 │       └── typings.d.ts
 ├── infrastructure/
 │   ├── models/

@@ -1,4 +1,4 @@
-import { Identifiable, IStorage } from "@infrastructure/storage/mod.ts";
+import { Id, Identifiable, IStorage } from "@infrastructure/storage/mod.ts";
 
 import { IRepository } from "@infrastructure/repositories/typings.d.ts";
 
@@ -9,7 +9,7 @@ export abstract class BaseRepository<T extends Identifiable> implements IReposit
     return this.storage.getAll();
   }
 
-  public getById(id: string): Promise<T | null> {
+  public getById(id: Id): Promise<T | null> {
     return this.storage.getById(id);
   }
 
@@ -17,15 +17,15 @@ export abstract class BaseRepository<T extends Identifiable> implements IReposit
     return this.storage.create(item);
   }
 
-  public update(id: string, item: T): Promise<T | null> {
+  public update(id: Id, item: T): Promise<T | null> {
     return this.storage.update(id, item);
   }
-
-  public delete(id: string): Promise<boolean> {
-    return this.storage.delete(id);
-  }
-
+  
   public upsert(item: T): Promise<T> {
     return this.storage.upsert(item);
+  }
+
+  public delete(id: Id): Promise<boolean> {
+    return this.storage.delete(id);
   }
 }

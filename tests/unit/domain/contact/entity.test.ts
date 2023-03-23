@@ -1,5 +1,5 @@
 import { describe, it } from "@std/testing/bdd.ts";
-import { assertEquals, assertThrows } from "@std/testing/asserts.ts";
+import { assertEquals } from "@std/testing/asserts.ts";
 
 import { Contact } from "@domain/contact/mod.ts";
 

@@ -15,3 +15,10 @@ export const UpdateContactSchema = CreateContactSchema.extend({
 });
 
 export type UpdateContactInput = z.TypeOf<typeof UpdateContactSchema>;
+
+export const UpsertContactSchema = CreateContactSchema.extend({
+  id: z.string().optional(),
+  accountId: z.string().optional(),
+});
+
+export type UpsertContactInput = z.TypeOf<typeof UpsertContactSchema>;

@@ -1,4 +1,4 @@
-import { Identifiable, IStorage } from "@infrastructure/storage/typings.d.ts";
+import { Id, Identifiable, IStorage } from "@infrastructure/storage/typings.d.ts";
 
 export class LocalStorage<T extends Identifiable> implements IStorage<T> {
   protected storageKey: string;
@@ -19,7 +19,7 @@ export class LocalStorage<T extends Identifiable> implements IStorage<T> {
     return Promise.resolve(this.loadData());
   }
 
-  public getById(id: string): Promise<T | null> {
+  public getById(id: Id): Promise<T | null> {
     const items = this.loadData();
     return Promise.resolve(items.find((item: T) => item.id === id) || null);
   }
@@ -31,7 +31,7 @@ export class LocalStorage<T extends Identifiable> implements IStorage<T> {
     return Promise.resolve(item);
   }
 
-  public update(id: string, item: T): Promise<T | null> {
+  public update(id: Id, item: T): Promise<T | null> {
     const items = this.loadData();
     const itemIndex = items.findIndex((existingItem: T) =>
       existingItem.id === id
@@ -45,22 +45,6 @@ export class LocalStorage<T extends Identifiable> implements IStorage<T> {
     this.saveData(items);
 
     return Promise.resolve(item);
-  }
-
-  public delete(id: string): Promise<boolean> {
-    const items = this.loadData();
-    const itemIndex = items.findIndex((existingItem: T) =>
-      existingItem.id === id
-    );
-
-    if (itemIndex === -1) {
-      return Promise.resolve(false);
-    }
-
-    items.splice(itemIndex, 1);
-    this.saveData(items);
-
-    return Promise.resolve(true);
   }
 
   public upsert(item: T): Promise<T> {
@@ -78,5 +62,21 @@ export class LocalStorage<T extends Identifiable> implements IStorage<T> {
     this.saveData(items);
 
     return Promise.resolve(item);
+  }
+
+  public delete(id: Id): Promise<boolean> {
+    const items = this.loadData();
+    const itemIndex = items.findIndex((existingItem: T) =>
+      existingItem.id === id
+    );
+
+    if (itemIndex === -1) {
+      return Promise.resolve(false);
+    }
+
+    items.splice(itemIndex, 1);
+    this.saveData(items);
+
+    return Promise.resolve(true);
   }
 }

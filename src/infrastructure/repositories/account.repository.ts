@@ -1,4 +1,4 @@
-import { Account } from "@domain/account/entity.ts";
+import { Account } from "@domain/account/mod.ts";
 import { IStorage } from "@infrastructure/storage/mod.ts";
 
 import { BaseRepository } from "@infrastructure/repositories/base.repository.ts";
