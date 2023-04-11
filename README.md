@@ -7,8 +7,8 @@
  - domain/ contains your domain entities, services, and validation schema.
  - infrastructure/ contains your ORM models, repositories, and storage implementation.
  - lib/ contains the database, router, and server-related code.
- - utils/ contains various utility modules, such as configuration, logging, email notifications, and helper functions.
- - shared/ contains shared interfaces, classes, and helpers that can be used across multiple layers and domains.
+ - utils/ contains various utility modules, such as configuration, logging, and email notifications.
+ - shared/ contains shared interfaces, classes, and helper functions that can be used across multiple layers and domains.
 ```
 src/
 ├── main.ts
