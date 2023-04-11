@@ -8,6 +8,7 @@
  - infrastructure/ contains your ORM models, repositories, and storage implementation.
  - lib/ contains the database, router, and server-related code.
  - utils/ contains various utility modules, such as configuration, logging, email notifications, and helper functions.
+ - shared/ contains shared interfaces, classes, and helpers that can be used across multiple layers and domains.
 ```
 src/
 ├── main.ts
@@ -103,4 +104,11 @@ src/
 │       ├── mod.ts
 │       ├── helpers.ts
 │       └── typings.d.ts
+└── shared/
+    ├── identity/
+        ├── helpers.ts
+        └── typings.d.ts
+    ├── auditable.ts
+    ├── identifiable.ts
+    └── typings.d.ts
 ```
