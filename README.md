@@ -15,13 +15,13 @@ src/
 ├── api/
 │   ├── routes/
 │   │   ├── mod.ts
-│   │   ├── account.routes.ts
-│   │   ├── contact.routes.ts
+│   │   ├── account.ts
+│   │   ├── contact.ts
 │   │   └── typings.d.ts
 │   ├── controllers/
 │   │   ├── mod.ts
-│   │   ├── account.controller.ts
-│   │   ├── contact.controller.ts
+│   │   ├── account.ts
+│   │   ├── contact.ts
 │   │   └── typings.d.ts
 │   └── middleware/
 │       ├── mod.ts
@@ -39,9 +39,9 @@ src/
 │   │   └── typings.d.ts
 │   └── services/
 │       ├── mod.ts
-│       ├── account.service.ts
-│       ├── contact.service.ts
-│       ├── base.service.ts
+│       ├── account.ts
+│       ├── contact.ts
+│       ├── base.ts
 │       └── typings.d.ts
 ├── domain/
 │   ├── account/
@@ -57,14 +57,14 @@ src/
 ├── infrastructure/
 │   ├── models/
 │   │   ├── mod.ts
-│   │   ├── account.model.ts
-│   │   ├── contact.model.ts
+│   │   ├── account.ts
+│   │   ├── contact.ts
 │   │   └── typings.d.ts
 │   ├── repositories/
 │   │   ├── mod.ts
-│   │   ├── base.repository.ts
-│   │   ├── account.repository.ts
-│   │   ├── contact.repository.ts
+│   │   ├── base.ts
+│   │   ├── account.ts
+│   │   ├── contact.ts
 │   │   └── typings.d.ts
 │   └── storage/
 │       ├── mod.ts
@@ -92,23 +92,24 @@ src/
 │   │   └── typings.d.ts
 │   ├── logger/
 │   │   ├── mod.ts
-│   │   ├── logger.ts
+│   │   ├── helpers.ts
 │   │   └── typings.d.ts
-│   ├── mailer/
+│   └── mailer/
+│       ├── mod.ts
+│       ├── mailer.ts
+│       ├── template.html
+│       ├── content.json
+│       └── typings.d.ts
+├── shared/
+│   ├── identity/
 │   │   ├── mod.ts
-│   │   ├── mailer.ts
-│   │   ├── template.html
-│   │   ├── content.json
+│   │   ├── helpers.ts
+│   │   └── typings.d.ts
+│   ├── audit/
+│   │   ├── mod.ts
 │   │   └── typings.d.ts
 │   └── helpers/
 │       ├── mod.ts
 │       ├── helpers.ts
 │       └── typings.d.ts
-└── shared/
-    ├── identity/
-        ├── helpers.ts
-        └── typings.d.ts
-    ├── auditable.ts
-    ├── identifiable.ts
-    └── typings.d.ts
 ```
